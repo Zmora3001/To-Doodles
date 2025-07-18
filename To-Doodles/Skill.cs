@@ -9,14 +9,33 @@ public class Skill
 
     public void IncreaseLevel()
     {
-        // TODO: Level erhöhen und Threshold anpassen
+        ExperienceInLevel -= ReqExperienceTillNextLevel;
         Level++;
+        ReqExperienceTillNextLevel = CalculateNextLevelThreshold();
     }
 
     public void IncreaseExp(int amount)
     {
-        // TODO: Erfahrung gutschreiben und Level‑Ups prüfen
         ExperienceOverall += amount;
         ExperienceInLevel += amount;
+
+        if (ExperienceInLevel >= ReqExperienceTillNextLevel)
+        {
+            IncreaseLevel();
+        }
+    }
+
+    // Leveling Formula aus EldenRing©
+    public int CalculateNextLevelThreshold()
+    {
+        var x = ((Level + 81) - 92) * 0.02;
+        if (x < 0)
+        {
+            x = 0;
+        }
+
+        var reqXp = Math.Pow((x + 0.1) * (Level + 81), 2.0) + 1;
+        
+        return (int)reqXp;
     }
 }
