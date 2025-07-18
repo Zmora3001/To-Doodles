@@ -33,10 +33,10 @@ public static class TaskStorage
         }
     }
 
-    public static void Load(out List<Task> activeTasks, out List<Task> completeTasks)
+    public static void Load(out List<Task> tempActiveTasks, out List<Task> tempCompleteTasks)
     {
-        activeTasks = new List<Task>();
-        completeTasks = new List<Task>();
+        tempActiveTasks = new List<Task>();
+        tempCompleteTasks = new List<Task>();
 
         try
         {
@@ -47,10 +47,10 @@ public static class TaskStorage
             var data = JsonSerializer.Deserialize<TaskData>(json);
 
             if (data?.Active != null)
-                activeTasks.AddRange(data.Active);
+                tempActiveTasks.AddRange(data.Active);
 
             if (data?.Complete != null)
-                completeTasks.AddRange(data.Complete);
+                tempCompleteTasks.AddRange(data.Complete);
         }
         catch (Exception ex)
         {
