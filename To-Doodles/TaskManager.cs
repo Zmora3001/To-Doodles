@@ -31,6 +31,6 @@ public class TaskManager
         activeTasks.Remove(task);
     }
     
-    public IReadOnlyList<Task> GetAllTasks() => activeTasks.AsReadOnly();
+    public IReadOnlyList<Task> GetActiveTasks() => activeTasks.AsReadOnly();
     public IReadOnlyList<Task> GetCompleteTasks() => completeTasks.AsReadOnly();
 }
