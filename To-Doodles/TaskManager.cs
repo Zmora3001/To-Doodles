@@ -4,19 +4,33 @@ namespace To_Doodles;
 
 public class TaskManager
 {
-    private readonly List<Task> _tasks = new();
-
-    public void AddTask(Task task)
+    private readonly List<Task> activeTasks = new();
+    private readonly List<Task> completeTasks = new();
+    
+    public void AddActiveTask(Task task)
     {
         // TODO: Task hinzufügen und Persistenz anstoßen
-        _tasks.Add(task);
+        activeTasks.Add(task);
     }
 
-    public void RemoveTask(Task task)
+    public void RemoveActiveTask(Task task)
     {
         // TODO: Task entfernen und Persistenz anstoßen
-        _tasks.Remove(task);
+        activeTasks.Remove(task);
     }
 
-    public IReadOnlyList<Task> GetAllTasks() => _tasks.AsReadOnly();
+    public void AddCompleteTask(Task task)
+    {
+        // TODO: Task hinzufügen und Persistenz anstoßen
+        activeTasks.Add(task);
+    }
+
+    public void RemoveCompleteTask(Task task)
+    {
+        // TODO: Task entfernen und Persistenz anstoßen
+        activeTasks.Remove(task);
+    }
+    
+    public IReadOnlyList<Task> GetAllTasks() => activeTasks.AsReadOnly();
+    public IReadOnlyList<Task> GetCompleteTasks() => completeTasks.AsReadOnly();
 }
