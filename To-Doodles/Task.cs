@@ -16,12 +16,11 @@ public class Task
     public int CreativityExp { get; init; }
 
     // Optional timestamps
-    public DateTime CreatedAt { get; init; } = DateTime.Now;
-    public DateTime? DueDate { get; set; }
+    // public DateTime CreatedAt { get; init; } = DateTime.Now;
+    // public DateTime? DueDate { get; set; }
 
     public void ToggleComplete()
     {
-        // TODO: Umschalten des Status und ggf. Abschlusszeitpunkt setzen
         IsComplete = !IsComplete;
     }
 }
