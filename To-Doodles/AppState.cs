@@ -9,7 +9,10 @@ public class AppState
 
     public void ProcessTask(Task task)
     {
-        // TODO: Erfahrungspunkte aus dem Task auf die jeweiligen Skills anwenden
+        Wisdom.IncreaseExp(task.WisdomExp);
+        Patience.IncreaseExp(task.PatienceExp);
+        Fun.IncreaseExp(task.FunExp);
+        Creativity.IncreaseExp(task.CreativityExp);
     }
 
     public Skill GetWisdom() => Wisdom;

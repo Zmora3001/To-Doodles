@@ -1,17 +1,66 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
 
 namespace To_Doodles;
 
-public class TaskStorage
+public static class TaskStorage
 {
-    public void StoreTasks(IEnumerable<Task> tasks)
+    private static readonly string SaveFilePath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+        "ToDoodles", "tasks.json"
+    );
+
+    public static void Save(List<Task> activeTasks, List<Task> completeTasks)
     {
-        // TODO: Hier kommt Code zum Speichern der Tasks in ein Text‑Dokument (z.B. JSON)
+        try
+        {
+            var data = new TaskData
+            {
+                Active = activeTasks,
+                Complete = completeTasks
+            };
+
+            string json = JsonSerializer.Serialize(data, new JsonSerializerOptions { WriteIndented = true });
+
+            Directory.CreateDirectory(Path.GetDirectoryName(SaveFilePath)!);
+            File.WriteAllText(SaveFilePath, json);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Speichern: {ex.Message}");
+        }
     }
 
-    public List<Task> LoadTasks()
+    public static void Load(out List<Task> tempActiveTasks, out List<Task> tempCompleteTasks)
     {
-        // TODO: Hier kommt Code zum Laden der Tasks aus einem Text‑Dokument
-        return new List<Task>();
+        tempActiveTasks = new List<Task>();
+        tempCompleteTasks = new List<Task>();
+
+        try
+        {
+            if (!File.Exists(SaveFilePath))
+                return;
+
+            string json = File.ReadAllText(SaveFilePath);
+            var data = JsonSerializer.Deserialize<TaskData>(json);
+
+            if (data?.Active != null)
+                tempActiveTasks.AddRange(data.Active);
+
+            if (data?.Complete != null)
+                tempCompleteTasks.AddRange(data.Complete);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Laden: {ex.Message}");
+        }
+    }
+
+    private class TaskData
+    {
+        public List<Task>? Active { get; set; }
+        public List<Task>? Complete { get; set; }
     }
 }
