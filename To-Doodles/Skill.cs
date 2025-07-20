@@ -7,6 +7,7 @@ public class Skill
     public int ExperienceInLevel { get; private set; }
     public int ExperienceOverall { get; private set; }
 
+    // erhöht das Level um 1, wenn die Erfahrung im aktuellen Level die benötigte Erfahrung zum Aufsteigen erreicht
     public void IncreaseLevel()
     {
         ExperienceInLevel -= ReqExperienceTillNextLevel;
@@ -14,6 +15,7 @@ public class Skill
         ReqExperienceTillNextLevel = CalculateNextLevelThreshold();
     }
 
+    // erhöht die Erfahrung um den angegebenen Betrag und prüft, ob das Level erhöht werden muss
     public void IncreaseExp(int amount)
     {
         ExperienceOverall += amount;
@@ -25,7 +27,7 @@ public class Skill
         }
     }
 
-    // Leveling Formula aus EldenRing©
+    // Leveling Formel aus EldenRing©
     public int CalculateNextLevelThreshold()
     {
         var x = ((Level + 81) - 92) * 0.02;
