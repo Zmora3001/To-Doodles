@@ -7,7 +7,7 @@ public class Task
     public int Id { get; init; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public bool IsComplete { get; private set; }
+    public bool IsComplete { get; private set; } = false;
 
     // Experience rewards
     public int WisdomExp { get; init; }
