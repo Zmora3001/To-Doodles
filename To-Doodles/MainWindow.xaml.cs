@@ -19,6 +19,9 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-
+        DataContext = new TaskManager();
+        // Add this after DataContext assignment in MainWindow.xaml.cs
+        var manager = (TaskManager)DataContext;
+        manager.CreateNewTask("Test Task", "This is a test description.", 1, 2, 3, 4);
     }
 }

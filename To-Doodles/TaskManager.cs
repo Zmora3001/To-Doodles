@@ -6,6 +6,10 @@ public class TaskManager
 {
     private static readonly ObservableCollection<Task> activeTasks = new();
     private static readonly ObservableCollection<Task> completeTasks = new();
+    
+    public ObservableCollection<Task> ActiveTasks => activeTasks;
+    public ObservableCollection<Task> CompleteTasks => completeTasks;
+    
     private static int nextTaskId = 1;
 
     public TaskManager()
@@ -45,7 +49,7 @@ public class TaskManager
     }
 
     // Methode zum Erstellen einer neuen Aufgabe
-    public static Task CreateNewTask(string title, string description, int wisdomExp, int patienceExp, int funExp, int creativityExp)
+    public Task CreateNewTask(string title, string description, int wisdomExp, int patienceExp, int funExp, int creativityExp)
     {
         var newTask = new Task
         {
