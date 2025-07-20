@@ -19,7 +19,7 @@
             </Grid.ColumnDefinitions>
             
             <!--ItemsSource="{d:SampleData ItemCount=5}"-->
-            <ListView Name="TaskManager" ItemsSource="{d:SampleData ItemCount=5}" Margin="10,30,10,10" Grid.RowSpan="3" Grid.ColumnSpan="2" SelectionChanged="TaskManager_SelectionChanged">
+            <ListView Name="TaskManager" Margin="10,30,10,10" Grid.RowSpan="3" Grid.ColumnSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="local:Task">
                         <Grid Margin="0" HorizontalAlignment="Stretch">
@@ -57,7 +57,14 @@
                     
                 </ListView.ItemTemplate>
             </ListView>
-            <Button Grid.Column="1" Content="Button" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="60" Height="64"/>
+            <Button Grid.Column="1" Content="Button" Click="OpenTaskUI_Click" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="60" Height="60" Margin="0,0,4,0">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="100"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <ContentControl Name="TaskUI" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="40,0,10,10"/>
         </Grid>
     </Grid>
 </Window>

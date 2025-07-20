@@ -19,6 +19,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        
+    }
 
+    private void OpenTaskUI_Click(object sender, RoutedEventArgs e)
+    {
+        TaskUI.Content = new TaskUI();
     }
 }
