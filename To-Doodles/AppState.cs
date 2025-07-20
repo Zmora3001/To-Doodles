@@ -7,6 +7,7 @@ public class AppState
     private Skill Fun { get; } = new();
     private Skill Creativity { get; } = new();
 
+    // fügt die Erfahrung aus der Task zu den jeweiligen Skills hinzu
     public void ProcessTask(Task task)
     {
         Wisdom.IncreaseExp(task.WisdomExp);

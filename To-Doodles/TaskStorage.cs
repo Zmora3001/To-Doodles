@@ -7,11 +7,13 @@ namespace To_Doodles;
 
 public static class TaskStorage
 {
+    // Pfad zur JSON-Datei, in der die Aufgaben gespeichert werden
     private static readonly string SaveFilePath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         "ToDoodles", "tasks.json"
     );
 
+    // Speichert die aktiven und abgeschlossenen Aufgaben in einer JSON-Datei so, dass man sie später wieder separat laden kann
     public static void Save(List<Task> activeTasks, List<Task> completeTasks)
     {
         try
@@ -33,8 +35,10 @@ public static class TaskStorage
         }
     }
 
+    // Lädt die aktiven und abgeschlossenen Aufgaben aus der JSON-Datei
     public static void Load(out List<Task> tempActiveTasks, out List<Task> tempCompleteTasks)
     {
+        // Temporäre Listen für die geladenen Aufgaben, da Listen in TaskManager private read-only sind
         tempActiveTasks = new List<Task>();
         tempCompleteTasks = new List<Task>();
 
@@ -46,10 +50,10 @@ public static class TaskStorage
             string json = File.ReadAllText(SaveFilePath);
             var data = JsonSerializer.Deserialize<TaskData>(json);
 
-            if (data?.Active != null)
+            if (data?.Active != null) // Wenn vorhanden, fügt die aktiven Aufgaben zu Liste hinzu
                 tempActiveTasks.AddRange(data.Active);
 
-            if (data?.Complete != null)
+            if (data?.Complete != null) // Wenn vorhanden, fügt die abgeschlossenen Aufgaben zu Liste hinzu
                 tempCompleteTasks.AddRange(data.Complete);
         }
         catch (Exception ex)
@@ -58,6 +62,7 @@ public static class TaskStorage
         }
     }
 
+    // Hilfsklasse für die Serialisierung der aktiven und abgeschlossenen Aufgaben
     private class TaskData
     {
         public List<Task>? Active { get; set; }
