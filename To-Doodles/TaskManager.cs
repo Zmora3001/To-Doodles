@@ -12,7 +12,7 @@ public class TaskManager
     
     private static int nextTaskId = 1;
 
-    public TaskManager()
+public TaskManager()
     {
         TaskStorage.Load(out var active, out var complete);
         

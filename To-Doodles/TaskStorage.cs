@@ -43,6 +43,7 @@ public static class TaskStorage
         tempActiveTasks = new ObservableCollection<Task>();
         tempCompleteTasks = new ObservableCollection<Task>();
 
+
         try
         {
             if (!File.Exists(SaveFilePath))
