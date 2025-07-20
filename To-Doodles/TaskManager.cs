@@ -65,6 +65,19 @@ public class TaskManager
         return newTask;
     }
     
+    // Methode zum kompletten Löschen einer Aufgabe
+    public static void DeleteTask(Task task)
+    {
+        if (activeTasks.Contains(task))
+        {
+            RemoveActiveTask(task);
+        }
+        else if (completeTasks.Contains(task))
+        {
+            RemoveCompleteTask(task);
+        }
+    }
+
     // Getter für die Listen
     public IReadOnlyList<Task> GetActiveTasks() => activeTasks.AsReadOnly();
     public IReadOnlyList<Task> GetCompleteTasks() => completeTasks.AsReadOnly();
