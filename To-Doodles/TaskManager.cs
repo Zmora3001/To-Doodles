@@ -2,8 +2,8 @@
 
 public class TaskManager
 {
-    private readonly List<Task> activeTasks = new();
-    private readonly List<Task> completeTasks = new();
+    private static readonly List<Task> activeTasks = new();
+    private static readonly List<Task> completeTasks = new();
 
     public TaskManager()
     {
@@ -12,25 +12,26 @@ public class TaskManager
         completeTasks.AddRange(complete);
     }
 
-    public void AddActiveTask(Task task)
+    // Methoden zum Hinzufügen und Entfernen von Aufgaben
+    public static void AddActiveTask(Task task)
     {
         activeTasks.Add(task);
         TaskStorage.Save(activeTasks, completeTasks);
     }
 
-    public void RemoveActiveTask(Task task)
+    public static void RemoveActiveTask(Task task)
     {
         activeTasks.Remove(task);
         TaskStorage.Save(activeTasks, completeTasks);
     }
 
-    public void AddCompleteTask(Task task)
+    public static void AddCompleteTask(Task task)
     {
         completeTasks.Add(task);
         TaskStorage.Save(activeTasks, completeTasks);
     }
 
-    public void RemoveCompleteTask(Task task)
+    public static void RemoveCompleteTask(Task task)
     {
         completeTasks.Remove(task);
         TaskStorage.Save(activeTasks, completeTasks);
