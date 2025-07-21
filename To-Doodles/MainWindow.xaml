@@ -19,7 +19,10 @@
             </Grid.ColumnDefinitions>
             
             <!--ItemsSource="{d:SampleData ItemCount=5}"-->
-            <ListView Name="TaskManager" Margin="10,30,10,10" Grid.RowSpan="3" Grid.ColumnSpan="2">
+
+            <ListView Name="TaskManager" ItemsSource="{Binding ActiveTasks}" Margin="10,30,10,10" Grid.RowSpan="3" Grid.ColumnSpan="2"
+                      d:DataContext="{d:DesignInstance }">
+
                 <ListView.ItemTemplate>
                     <DataTemplate DataType="local:Task">
                         <Grid Margin="0" HorizontalAlignment="Stretch">
