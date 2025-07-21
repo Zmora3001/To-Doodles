@@ -20,8 +20,13 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = new TaskManager();
-        // Add this after DataContext assignment in MainWindow.xaml.cs
         var manager = (TaskManager)DataContext;
         manager.CreateNewTask("Test Task", "This is a test description.", 1, 2, 3, 4);
+        
+    }
+
+    private void OpenTaskUI_Click(object sender, RoutedEventArgs e)
+    {
+        TaskUI.Content = new TaskUI();
     }
 }
