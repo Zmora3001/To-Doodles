@@ -17,7 +17,7 @@ public TaskManager()
         TaskStorage.Load(out var active, out var complete);
         
         foreach (var task in active)
-            completeTasks.Add(task);
+            activeTasks.Add(task);
         
         foreach (var task in complete)
             completeTasks.Add(task);
