@@ -138,6 +138,11 @@
                 Panel.ZIndex="99">
             
             <Grid>
+                
+                <!-- Die RowDefinition der ersten Zeile und die ColumnDefinition der ersten Spalte sind 
+                    festgelegt auf 20 Pixel, damit ist der Abstand die das TaskUI Fenster zur linken und rechten Seite hat 
+                    fest, auch wenn es sich je nach Fenster ziehen vergrößert-->
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="*"/>
