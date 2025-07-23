@@ -24,7 +24,8 @@
                 <StackPanel>
 
                     <ListView ItemsSource="{Binding ActiveTasks}"
-                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      BorderThickness="0,0,0,1" BorderBrush="LightGray">
 
                         <ListView.ItemTemplate>
 
@@ -70,7 +71,8 @@
                     </ListView>
 
                     <ListView ItemsSource="{Binding CompleteTasks}"
-                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      BorderThickness="0">
 
                         <ListView.ItemTemplate>
 
