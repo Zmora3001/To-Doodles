@@ -30,4 +30,12 @@ public partial class MainWindow : Window
     {
         ModalOverlay.Visibility = Visibility.Visible;
     }
+
+    private void CheckBox_Checked(object sender, RoutedEventArgs e)
+    {
+        if (sender is CheckBox { DataContext: Task task })
+        {
+            task.ToggleComplete();
+        }
+    }
 }
