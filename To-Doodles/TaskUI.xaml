@@ -1,7 +1,8 @@
 <UserControl x:Class="To_Doodles.TaskUI"
        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Height="560" Width="300">
+        Height="Auto"
+        Width="Auto">
 
     <Grid Background="LightGray">
         <Grid.RowDefinitions>
@@ -19,8 +20,6 @@
                     <Setter Property="CornerRadius" Value="5"/>
                 </Style>
             </Button.Resources>
-
-
 
         </Button>
         

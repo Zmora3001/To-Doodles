@@ -27,6 +27,6 @@ public partial class MainWindow : Window
 
     private void OpenTaskUI_Click(object sender, RoutedEventArgs e)
     {
-        TaskUI.Content = new TaskUI();
+        ModalOverlay.Visibility = Visibility.Visible;
     }
 }

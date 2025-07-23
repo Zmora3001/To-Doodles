@@ -20,9 +20,9 @@ namespace To_Doodles;
     private void CloseButton_Click(object sender, RoutedEventArgs e)
     {
         // Versucht, das UserControl aus seinem Parent-Panel zu entfernen
-        if (this.Parent is Panel panel)
+        if (Window.GetWindow(this) is MainWindow mainWindow)
         {
-            panel.Children.Remove(this);
+            mainWindow.ModalOverlay.Visibility = Visibility.Collapsed;
         }
         else
         {
