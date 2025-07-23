@@ -23,10 +23,11 @@ public partial class MainWindow : Window
         var manager = (TaskManager)DataContext;
         // manager.CreateNewTask("Test Task", "This is a test description.", 1, 2, 3, 4);
         
+
     }
 
     private void OpenTaskUI_Click(object sender, RoutedEventArgs e)
     {
-        TaskUI.Content = new TaskUI();
+        ModalOverlay.Visibility = Visibility.Visible;
     }
 }

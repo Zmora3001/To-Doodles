@@ -19,47 +19,107 @@
             </Grid.ColumnDefinitions>
             
             <!--ItemsSource="{d:SampleData ItemCount=5}"-->
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto">
 
-            <ListView Name="TaskManager" ItemsSource="{Binding ActiveTasks}" Margin="10,30,10,10" Grid.RowSpan="3" Grid.ColumnSpan="2"
-                      d:DataContext="{d:DesignInstance }">
+                <StackPanel>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate DataType="local:Task">
-                        <Grid Margin="0" HorizontalAlignment="Stretch">
+                    <ListView ItemsSource="{Binding ActiveTasks}"
+                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      BorderThickness="0,0,0,1" BorderBrush="LightGray">
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition/>
-                                
-                            </Grid.ColumnDefinitions>
-                            <CheckBox Grid.Column="0" Grid.RowSpan="2" Margin="5,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <ListView.ItemTemplate>
 
-                            <Grid Grid.Column="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                            <DataTemplate DataType="local:Task">
+                                <Grid Margin="0" HorizontalAlignment="Stretch">
 
-                                <Grid Grid.Row="0">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Margin="5,5,0,0" VerticalAlignment="Center" Text="{Binding Title}" FontSize="16"/>
-                                    <ComboBox Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
-                                        <ComboBoxItem Content="Edit"/>
-                                        <ComboBoxItem Content="Delete"/>
-                                    </ComboBox>
+                                    
+                                    <CheckBox Grid.Column="0" Grid.RowSpan="2" Margin="5,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Margin="5,5,0,0" VerticalAlignment="Center" Text="{Binding Title}" FontSize="16"/>
+                                            <ComboBox Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
+                                                <ComboBoxItem Content="Edit"/>
+                                                <ComboBoxItem Content="Delete"/>
+                                            </ComboBox>
+
+                                        </Grid>
+                                        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="1" Fill="#FFB0BEC5" Margin="5,0,5,0"/>
+                                        <TextBlock Grid.Row="1" Margin="5,0,5,5" VerticalAlignment="Top" Text="{Binding Description}" FontSize="12"/>
+                                    </Grid>
 
                                 </Grid>
-                                <Rectangle Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="1" Fill="#FFB0BEC5" Margin="5,0,5,0"/>
-                                <TextBlock Grid.Row="1" Margin="5,0,5,5" VerticalAlignment="Top" Text="{Binding Description}" FontSize="12"/>
-                            </Grid>
-                        </Grid>
-                    </DataTemplate>
-                    
-                </ListView.ItemTemplate>
-            </ListView>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+                        
+                    </ListView>
+
+                    <ListView ItemsSource="{Binding CompleteTasks}"
+                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      BorderThickness="0">
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate DataType="local:Task">
+                                <Grid Margin="0" HorizontalAlignment="Stretch">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Grid.Column="0" Grid.RowSpan="2" Margin="5,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+                                    <Grid Grid.Column="1">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Margin="5,5,0,0" VerticalAlignment="Center" Text="{Binding Title}" FontSize="16"/>
+                                            <ComboBox Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
+                                                <ComboBoxItem Content="Edit"/>
+                                                <ComboBoxItem Content="Delete"/>
+                                            </ComboBox>
+
+                                        </Grid>
+                                        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="1" Fill="#FFB0BEC5" Margin="5,0,5,0"/>
+                                        <TextBlock Grid.Row="1" Margin="5,0,5,5" VerticalAlignment="Top" Text="{Binding Description}" FontSize="12"/>
+                                    </Grid>
+
+                                </Grid>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                </StackPanel>
+                
+            </ScrollViewer>
+            
             <Button Grid.Column="1" Content="Button" Click="OpenTaskUI_Click" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="60" Height="60" Margin="0,0,4,0">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -67,7 +127,41 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <ContentControl Name="TaskUI" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="40,0,10,10"/>
+
+            <!--ContentControl Name="TaskUI" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="40,0,10,10"/-->
+
         </Grid>
+        
+        <Border x:Name="ModalOverlay"
+                Background="#80000000"
+                Visibility="Collapsed"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Panel.ZIndex="99">
+            
+            <Grid>
+                
+                <!-- Die RowDefinition der ersten Zeile und die ColumnDefinition der ersten Spalte sind 
+                    festgelegt auf 20 Pixel, damit ist der Abstand die das TaskUI Fenster zur linken und rechten Seite hat 
+                    fest, auch wenn es sich je nach Fenster ziehen vergrößert-->
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Dein eingebetteter "Dialog" -->
+                    <local:TaskUI x:Name="ModalTaskUI" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,10,10"/>
+                        <!-- Durch das oben definierte Grid und dadurch dass die Alignments auf Stretch stehen
+                             füllt das TaskUI Fenster immer den unteren rechten Teil des MainWindow aus -->
+            </Grid>
+            
+        </Border>
+        
     </Grid>
 </Window>

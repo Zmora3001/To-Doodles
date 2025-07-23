@@ -2,7 +2,8 @@
        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
        xmlns:toDoodles="clr-namespace:To_Doodles"
-       Height="560" Width="300">
+       Height="Auto"
+       Width="Auto">
 
     <UserControl.Resources>
         <toDoodles:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter"/>
@@ -48,7 +49,7 @@
                 </Button.Resources>
             </Button>
         </Grid>
-
+      
         <!-- Description -->
         <Grid Grid.Row="1" Margin="0,10,0,10">
             <TextBox Name="DescriptionBox"
@@ -141,23 +142,4 @@
                    Visibility="{Binding Text, ElementName=CreativityBox, Converter={StaticResource EmptyToVisibilityConverter}}"/>
     </Grid>
 </Grid>
-
-
-        <!-- Create Button -->
-        <Grid Grid.Row="3" Margin="0,0,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Content="Create" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,10,0"
-                    Width="80" Height="20" Click="CreateButton_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-        </Grid>
-    </Grid>
 </UserControl>
