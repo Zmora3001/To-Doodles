@@ -30,4 +30,36 @@ namespace To_Doodles;
             this.Visibility = Visibility.Collapsed;
         }
     }
+
+    private void CreateButton_Click(object sender, RoutedEventArgs e)
+    {
+        var taskManager = (TaskManager)DataContext;
+
+        if (string.IsNullOrWhiteSpace(TitleBox.Text) || string.IsNullOrWhiteSpace(DescriptionBox.Text))
+        {
+            MessageBox.Show("Bitte Titel und Beschreibung ausfüllen.");
+            return;
+        }
+
+        if (!int.TryParse(WisdomBox.Text, out int wisdom) ||
+            !int.TryParse(PatienceBox.Text, out int patience) ||
+            !int.TryParse(FunBox.Text, out int fun) ||
+            !int.TryParse(CreativityBox.Text, out int creativity))
+        {
+            MessageBox.Show("Bitte gültige Zahlen für alle Eigenschaften eingeben.");
+            return;
+        }
+
+        var newTask = taskManager.CreateNewTask(
+            TitleBox.Text,
+            DescriptionBox.Text,
+            wisdom,
+            patience,
+            fun,
+            creativity
+        );
+
+        CloseButton_Click(sender, e);
+    }
+
 }
