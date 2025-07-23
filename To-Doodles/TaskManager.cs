@@ -7,8 +7,8 @@ public class TaskManager
     private static readonly ObservableCollection<Task> activeTasks = new();
     private static readonly ObservableCollection<Task> completeTasks = new();
     
-    public ObservableCollection<Task> ActiveTasks => activeTasks;
-    public ObservableCollection<Task> CompleteTasks => completeTasks;
+    public static ObservableCollection<Task> ActiveTasks => activeTasks;
+    public static ObservableCollection<Task> CompleteTasks => completeTasks;
     
     private static int nextTaskId = 1;
 
