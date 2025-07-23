@@ -155,7 +155,8 @@
 
                 <!-- Dein eingebetteter "Dialog" -->
                     <local:TaskUI x:Name="ModalTaskUI" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,10,10"/>
-                
+                        <!-- Durch das oben definierte Grid und dadurch dass die Alignments auf Stretch stehen
+                             füllt das TaskUI Fenster immer den unteren rechten Teil des MainWindow aus -->
             </Grid>
             
         </Border>
