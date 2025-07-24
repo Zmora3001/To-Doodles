@@ -22,16 +22,16 @@ Skills und Level-System wurden zum Grundgerüst hinzugefügt, während die Suche
 
 | Einsatzzweck | Verwendetes Modell | Erfahrung / Bewertung der Nützlichkeit |
 | ------------------------------------------ | ---------------------- | ------------------------------------------------------------- |
-| Anforderungsanalyse | ChatGPT-4o | z. B. Gute Strukturierung, aber fehlender Bezug zum Use Case. |
-| Architekturvorschläge / Designideen | | |
-| Code-Generierung (z. B. Klassen, Methoden) | | |
-| Testfallgenerierung (z. B. Unit Tests) | | |
-| Refactoring-Vorschläge | | |
-| Code Review | | |
-| Dokumentation (README, API-Doku etc.) | | |
-| Fehlersuche / Debugginghilfe | | |
-| Versionsverwaltung (Git-Strategien) | | |
-| Kommunikation (z. B. Commit Messages) | | |
+| Anforderungsanalyse |  | gar nicht verwendet |
+| Architekturvorschläge / Designideen | ChatGPT-4o | Anfänglich die Klassendiagramme/ UML Diagramme, funktionierte ganz gut zum einsteigen |
+| Code-Generierung (z. B. Klassen, Methoden) | ChatGPT und Copilot| vor allem in WPF um die Eigenheiten der Verbindung von Code und UI richtig umsetzen zu können |
+| Testfallgenerierung (z. B. Unit Tests) | ChatGPT | sehr gut |
+| Refactoring-Vorschläge |ChatGPT und Github Copilot | hat nicht gut funktioniert, erst nach mehrfachem nachfragen und prombts schreiben ging es|
+| Code Review | ChatGPT und GitHub Copilot| Hat einigermaßen gut funktioniert |
+| Dokumentation (README, API-Doku etc.) | GitHub Copilot| Vorschläge für die Wiki Einträge |
+| Fehlersuche / Debugginghilfe | ChatGPT-4 auch die Premium-modelle und GitHub Copilot | hat größtenteils gut funktioniert, vor allem nachdem man aufs Premiummodell umgestiegen ist |
+| Versionsverwaltung (Git-Strategien) | | gar nicht verwendet |
+| Kommunikation (z. B. Commit Messages) | JetBrains AI Free | hat gut funktioniert um schnell aussagekräftige und übersichtliche Commit Messages zu kreiieren |
 | Sonstiges | | |
 
 ## Dokumentation der technischen Schwierigkeiten
