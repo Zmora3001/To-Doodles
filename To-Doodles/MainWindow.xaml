@@ -221,7 +221,7 @@
                                                FontSize="12"
                                                TextTrimming="CharacterEllipsis"
                                                TextWrapping="Wrap"
-                                               MaxHeight="50"/>
+                                               MaxHeight="45"/>
 
                                     <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5,0,5,5">
 
@@ -242,6 +242,7 @@
                                         </Border>
 
                                     </StackPanel>
+
                                 </Grid>
 
                             </Grid>

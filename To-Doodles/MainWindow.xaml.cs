@@ -103,6 +103,11 @@ public partial class MainWindow : Window
     {
         if (sender is CheckBox { DataContext: Task task })
         {
+            // Ensure the task has a manager before toggling
+            if (task.Manager == null)
+            {
+                task.Manager = ManagerInstance;
+            }
             task.ToggleComplete();
         }
     }
