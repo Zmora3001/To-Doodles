@@ -103,6 +103,51 @@ public TaskManager()
         AppState?.ProcessTask(task);
     }
 
+    public void UpdateTask(Task task)
+    {
+        bool updated = false;
+    
+        // Check active tasks first
+        foreach (var activeTask in activeTasks)
+        {
+            if (activeTask.Id == task.Id)
+            {
+                activeTask.Title = task.Title;
+                activeTask.Description = task.Description;
+                activeTask.WisdomExp = task.WisdomExp;
+                activeTask.PatienceExp = task.PatienceExp;
+                activeTask.FunExp = task.FunExp;
+                activeTask.CreativityExp = task.CreativityExp;
+                updated = true;
+                break;
+            }
+        }
+    
+        // If not found in active tasks, check complete tasks
+        if (!updated)
+        {
+            foreach (var completeTask in completeTasks)
+            {
+                if (completeTask.Id == task.Id)
+                {
+                    completeTask.Title = task.Title;
+                    completeTask.Description = task.Description;
+                    completeTask.WisdomExp = task.WisdomExp;
+                    completeTask.PatienceExp = task.PatienceExp;
+                    completeTask.FunExp = task.FunExp;
+                    completeTask.CreativityExp = task.CreativityExp;
+                    updated = true;
+                    break;
+                }
+            }
+        }
+    
+        if (updated)
+        {
+            SaveState();
+        }
+    }
+
     // Getter für die Listen
     public IReadOnlyList<Task> GetActiveTasks() => activeTasks.AsReadOnly();
     public IReadOnlyList<Task> GetCompleteTasks() => completeTasks.AsReadOnly();
