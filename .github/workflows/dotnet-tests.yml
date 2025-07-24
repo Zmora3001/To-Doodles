@@ -1,7 +1,16 @@
-﻿jobs:
-  build:
-    runs-on: windows-latest  # Change from ubuntu-latest to windows-latest
+﻿name: .NET Tests
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering from the GitHub UI
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
     steps:
       - uses: actions/checkout@v3
 
