@@ -12,11 +12,12 @@ public class TaskManager
     
     private static int nextTaskId = 1;
     
-    private AppState? AppState { get; set; }
+    public AppState? AppState { get; set; }
 
-public TaskManager()
+public TaskManager(AppState appState)
     {
-        TaskStorage.Load(out var active, out var complete, out var appState);
+        AppState = AppState;
+        TaskStorage.Load(out var active, out var complete, out _);
         
         foreach (var task in active)
             activeTasks.Add(task);
@@ -24,7 +25,6 @@ public TaskManager()
         foreach (var task in complete)
             completeTasks.Add(task);
         
-        AppState = appState;
     }
 
     // Methoden zum Hinzufügen und Entfernen von Aufgaben
