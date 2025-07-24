@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace To_Doodles;
 
@@ -8,6 +7,7 @@ public class Task : INotifyPropertyChanged
     public int Id { get; init; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
+    public bool WasCompleted { get; set; }
     public bool IsComplete
     {
         get => _isComplete;
@@ -20,7 +20,7 @@ public class Task : INotifyPropertyChanged
             }
         }
     }
-    private bool _isComplete = false;
+    private bool _isComplete;
     public event PropertyChangedEventHandler? PropertyChanged;
 
     // Experience rewards
@@ -36,19 +36,31 @@ public class Task : INotifyPropertyChanged
     // toggelt den Status der Aufgabe und bewegt sie zwischen aktiv und abgeschlossen
     public void ToggleComplete()
     {
+        var manager = MainWindow.ManagerInstance;
+        if (manager == null)
+            throw new InvalidOperationException("TaskManager instance not initialized");
+
+        
         if (IsComplete)
         {
             IsComplete = false;
-            TaskManager.RemoveCompleteTask(this);
-            if (!TaskManager.ActiveTasks.Contains(this))
-                TaskManager.AddActiveTask(this);
+            manager.RemoveCompleteTask(this);
+            if (!manager.ActiveTasks.Contains(this))
+                manager.AddActiveTask(this);
         }
         else
         {
             IsComplete = true;
-            TaskManager.RemoveActiveTask(this);
-            if (!TaskManager.CompleteTasks.Contains(this))
-                TaskManager.AddCompleteTask(this);
+            
+            if (!WasCompleted)
+            {
+                WasCompleted = true;
+                manager.ProcessTaskCompletion(this); // Verarbeitet die Aufgabe, wenn sie zum ersten Mal abgeschlossen wird
+            }
+            
+            manager.RemoveActiveTask(this);
+            if (!manager.CompleteTasks.Contains(this))
+                manager.AddCompleteTask(this);
         }
     }
 }

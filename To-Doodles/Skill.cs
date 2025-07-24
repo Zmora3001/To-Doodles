@@ -1,10 +1,16 @@
-﻿namespace To_Doodles;
+﻿using System.Text.Json.Serialization;
+
+namespace To_Doodles;
 
 public class Skill
 {
+    [JsonInclude]
     public int Level { get; private set; } = 1;
+    [JsonInclude]
     public int ReqExperienceTillNextLevel { get; private set; } = 100;
+    [JsonInclude]
     public int ExperienceInLevel { get; private set; }
+    [JsonInclude]
     public int ExperienceOverall { get; private set; }
 
     // erhöht das Level um 1, wenn die Erfahrung im aktuellen Level die benötigte Erfahrung zum Aufsteigen erreicht
@@ -21,7 +27,7 @@ public class Skill
         ExperienceOverall += amount;
         ExperienceInLevel += amount;
 
-        if (ExperienceInLevel >= ReqExperienceTillNextLevel)
+        while (ExperienceInLevel >= ReqExperienceTillNextLevel)
         {
             IncreaseLevel();
         }
