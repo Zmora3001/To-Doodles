@@ -68,8 +68,7 @@ public TaskManager()
         AddActiveTask(newTask);
         return newTask;
     }
-    
-    // Methode zum kompletten Löschen einer Aufgabe
+
     public void DeleteTask(Task task)
     {
         if (activeTasks.Contains(task))
@@ -103,7 +102,6 @@ public TaskManager()
     {
         AppState?.ProcessTask(task);
     }
-
 
     // Getter für die Listen
     public IReadOnlyList<Task> GetActiveTasks() => activeTasks.AsReadOnly();
