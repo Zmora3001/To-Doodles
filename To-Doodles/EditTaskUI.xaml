@@ -34,7 +34,7 @@
                          FontSize="14"
                          VerticalContentAlignment="Center" 
                          Text="{Binding Title, Mode=TwoWay}"/>
-                <!--
+                
                 <TextBlock Text="Title"
                            Foreground="Gray"
                            FontSize="14"
@@ -43,7 +43,7 @@
                            HorizontalAlignment="Left"
                            IsHitTestVisible="False"
                            Visibility="{Binding Text, ElementName=TitleBox, Converter={StaticResource EmptyToVisibilityConverter}}"/> 
-                -->
+                
             </Grid>
 
             <Button Content="X" Grid.Column="1" Width="20" Height="20" Margin="0,5,0,0"
@@ -66,7 +66,7 @@
                      VerticalContentAlignment="Top"
                      Padding="5"
                      Text="{Binding Description, Mode=TwoWay}"/>
-            <!--
+            
             <TextBlock Text="Description"
                        Foreground="Gray"
                        FontSize="12"
@@ -75,7 +75,7 @@
                        HorizontalAlignment="Left"
                        IsHitTestVisible="False"
                        Visibility="{Binding Text, ElementName=DescriptionBox, Converter={StaticResource EmptyToVisibilityConverter}}"/>
-            -->
+            
         </Grid>
 
         <!-- Zahlenfelder -->
@@ -160,7 +160,7 @@
             </Grid.ColumnDefinitions>
 
             <Button Content="Change" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,10,0"
-                    Width="80" Height="20"> <!-- Click="ChangeButton_CLick muss noch implementiert werden-->
+                    Width="80" Height="20" Click="ChangeButton_CLick">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"/>

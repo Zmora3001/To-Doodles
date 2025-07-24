@@ -79,7 +79,23 @@ public partial class MainWindow : Window
     
     private void OpenEditTaskUI_Click(object sender, RoutedEventArgs e)
     {
+        var menuItem = sender as MenuItem;
+        var task = menuItem?.DataContext as Task;
+        if (task == null)
+        {
+            MessageBox.Show("Error: Task not found.");
+            return;
+        }
         EditModalOverlay.Visibility = Visibility.Visible;
+        ModalEditTaskUI.DataContext = task;
+        
+        ModalEditTaskUI.TitleBox.Text = task.Title;
+        ModalEditTaskUI.DescriptionBox.Text = task.Description;
+        ModalEditTaskUI.WisdomBox.Text = task.WisdomExp.ToString();
+        ModalEditTaskUI.PatienceBox.Text = task.PatienceExp.ToString();
+        ModalEditTaskUI.FunBox.Text = task.FunExp.ToString();
+        ModalEditTaskUI.CreativityBox.Text = task.CreativityExp.ToString();
+    
     }
 
     private void CheckBox_Checked(object sender, RoutedEventArgs e)
