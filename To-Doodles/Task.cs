@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Text.Json.Serialization;
 
 namespace To_Doodles;
 
@@ -78,39 +79,42 @@ public class Task : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
     
+    [JsonIgnore]
+
     public ITaskManager? Manager { get; set; }
 
     // toggelt den Status der Aufgabe und bewegt sie zwischen aktiv und abgeschlossen
     public void ToggleComplete()
     {
         if (Manager == null)
-            throw new InvalidOperationException("TaskManager not set");
-        var manager = Manager;
-
-        if (manager == null)
-            throw new InvalidOperationException("TaskManager instance not initialized");
-
-        
+        {
+            // Try to get the manager from the static instance
+            Manager = MainWindow.ManagerInstance;
+            if (Manager == null)
+                throw new InvalidOperationException("TaskManager not set");
+        }
+    
+        // Continue with the rest of your method
         if (IsComplete)
         {
             IsComplete = false;
-            manager.RemoveCompleteTask(this);
-            if (!manager.ActiveTasks.Contains(this))
-                manager.AddActiveTask(this);
+            Manager.RemoveCompleteTask(this);
+            if (!Manager.ActiveTasks.Contains(this))
+                Manager.AddActiveTask(this);
         }
         else
         {
             IsComplete = true;
-            
+        
             if (!WasCompleted)
             {
                 WasCompleted = true;
-                manager.ProcessTaskCompletion(this); // Verarbeitet die Aufgabe, wenn sie zum ersten Mal abgeschlossen wird
+                Manager.ProcessTaskCompletion(this);
             }
-            
-            manager.RemoveActiveTask(this);
-            if (!manager.CompleteTasks.Contains(this))
-                manager.AddCompleteTask(this);
+        
+            Manager.RemoveActiveTask(this);
+            if (!Manager.CompleteTasks.Contains(this))
+                Manager.AddCompleteTask(this);
         }
     }
 }

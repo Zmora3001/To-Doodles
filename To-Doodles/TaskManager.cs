@@ -14,16 +14,22 @@ public class TaskManager: ITaskManager
     
     private AppState? AppState { get; set; }
 
-public TaskManager()
+    public TaskManager()
     {
         TaskStorage.Load(out var active, out var complete, out var appState);
-        
+    
         foreach (var task in active)
+        {
+            task.Manager = this;
             activeTasks.Add(task);
-        
+        }
+    
         foreach (var task in complete)
+        {
+            task.Manager = this;
             completeTasks.Add(task);
-        
+        }
+    
         AppState = appState;
     }
 
@@ -63,7 +69,8 @@ public TaskManager()
             WisdomExp = wisdomExp,
             PatienceExp = patienceExp,
             FunExp = funExp,
-            CreativityExp = creativityExp
+            CreativityExp = creativityExp,
+            Manager = this // Set Manager property
         };
         AddActiveTask(newTask);
         return newTask;
