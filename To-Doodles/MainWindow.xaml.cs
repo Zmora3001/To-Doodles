@@ -67,5 +67,10 @@ public partial class MainWindow : Window
         ModalOverlay.Visibility = Visibility.Visible;
     }
 
+    private void OpenEditTaskUI_Click(object sender, RoutedEventArgs e)
+    {
+        EditModalOverlay.Visibility = Visibility.Visible;
+    }
+
    
 }

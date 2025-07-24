@@ -57,7 +57,7 @@
                                             <Button x:Name="DropDownButton" Content="..." Click="DropDownButton_Click" Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
                                                 <Button.ContextMenu>
                                                     <ContextMenu x:Name="DropDownMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
-                                                        <MenuItem Header="Edit" />
+                                                        <MenuItem Header="Edit" Click="OpenEditTaskUI_Click"/>
                                                         <MenuItem Header="Delete" Click="OpenDeletePopUp_Click"/>
                                                     </ContextMenu>
                                                 </Button.ContextMenu>
@@ -109,7 +109,7 @@
                                             <Button x:Name="DropDownButton" Content="..." Click="DropDownButton_Click" Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
                                                 <Button.ContextMenu>
                                                     <ContextMenu x:Name="DropDownMenu" DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}">
-                                                        <MenuItem Header="Edit" />
+                                                        <MenuItem Header="Edit" Click="OpenEditTaskUI_Click"/>
                                                         <MenuItem Header="Delete" Click="OpenDeletePopUp_Click"/>
                                                     </ContextMenu>
                                                 </Button.ContextMenu>
@@ -170,11 +170,38 @@
 
                 <!-- Dein eingebetteter "Dialog" -->
                     <local:TaskUI x:Name="ModalTaskUI" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,10,10"/>
-                        <!-- Durch das oben definierte Grid und dadurch dass die Alignments auf Stretch stehen
+                    
+                <!-- Durch das oben definierte Grid und dadurch dass die Alignments auf Stretch stehen
                              füllt das TaskUI Fenster immer den unteren rechten Teil des MainWindow aus -->
             </Grid>
-            
+       
         </Border>
         
+        <!-- Overlay für das Edit Fenster-->
+        <Border x:Name="EditModalOverlay"
+        Background="#80000000"
+        Visibility="Collapsed"
+        HorizontalAlignment="Stretch"
+        VerticalAlignment="Stretch"
+        Panel.ZIndex="99">
+
+            <Grid>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <local:EditTaskUI x:Name="ModalEditTaskUI" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,10,10"/>
+
+            </Grid>
+
+        </Border>
+
     </Grid>
 </Window>
