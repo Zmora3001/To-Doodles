@@ -15,11 +15,11 @@ public class TaskManager: ITaskManager
     public AppState? AppState { get; set; }
 
 
-    public TaskManager()
+    public TaskManager(AppState appState)
     {
-        TaskStorage.Load(out var active, out var complete, out var appState);
+        AppState = appState;
+        TaskStorage.Load(out var active, out var complete, out _);
     
-        // In TaskManager constructor
         foreach (var task in active)
         {
             task.Manager = this;
@@ -30,10 +30,7 @@ public class TaskManager: ITaskManager
         {
             task.Manager = this;
             completeTasks.Add(task);
-        
-        AppState = appState;
-        
-        
+        }
     }
 
     // Methoden zum Hinzufügen und Entfernen von Aufgaben

@@ -33,7 +33,8 @@ namespace To_Doodles;
 
     private void CreateButton_Click(object sender, RoutedEventArgs e)
     {
-        var taskManager = (TaskManager)DataContext;
+        // Use the static ManagerInstance instead of casting DataContext
+        var taskManager = MainWindow.ManagerInstance;
 
         if (string.IsNullOrWhiteSpace(TitleBox.Text) || string.IsNullOrWhiteSpace(DescriptionBox.Text))
         {
@@ -50,7 +51,7 @@ namespace To_Doodles;
             return;
         }
 
-        var newTask = taskManager.CreateNewTask(
+        taskManager.CreateNewTask(
             TitleBox.Text,
             DescriptionBox.Text,
             wisdom,

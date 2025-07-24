@@ -22,33 +22,33 @@
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Grid.ColumnSpan = "2" Grid.Row="0" Orientation="Horizontal">
 
                 <Border BorderBrush="transparent" Background="CadetBlue" BorderThickness="1" CornerRadius="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Wisdom:" />
-                        <TextBlock Text="{Binding AppState.Wisdom.ExperienceOverall}" />
+                        <TextBlock Text="{Binding AppState.Wisdom.Level}" />
                     </StackPanel>
                 </Border>
 
                 <Border BorderBrush="transparent" Background="Gold" BorderThickness="1" CornerRadius="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Patience:" />
-                        <TextBlock Text="{Binding AppState.Patience.ExperienceOverall}"/>
+                        <TextBlock Text="{Binding AppState.Patience.Level}"/>
                     </StackPanel>
                 </Border>
 
                 <Border BorderBrush="transparent" Background="MediumSeaGreen" BorderThickness="1" CornerRadius="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  Text="Fun:" />
-                        <TextBlock Text="{Binding AppState.Fun.ExperienceOverall}"/>
+                        <TextBlock Text="{Binding AppState.Fun.Level}"/>
                     </StackPanel>
                 </Border>
 
                 <Border BorderBrush="transparent" Background="LightPink" BorderThickness="1" CornerRadius="5">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Creativity:" />
-                        <TextBlock Text="{Binding AppState.Creativity.ExperienceOverall}" />
+                        <TextBlock Text="{Binding AppState.Creativity.Level}" />
                     </StackPanel>
                 </Border>
 
