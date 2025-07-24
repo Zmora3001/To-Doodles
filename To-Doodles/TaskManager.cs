@@ -11,41 +11,45 @@ public class TaskManager
     public ObservableCollection<Task> CompleteTasks => completeTasks;
     
     private static int nextTaskId = 1;
+    
+    private AppState? AppState { get; set; }
 
 public TaskManager()
     {
-        TaskStorage.Load(out var active, out var complete);
+        TaskStorage.Load(out var active, out var complete, out var appState);
         
         foreach (var task in active)
             activeTasks.Add(task);
         
         foreach (var task in complete)
             completeTasks.Add(task);
+        
+        AppState = appState;
     }
 
     // Methoden zum Hinzufügen und Entfernen von Aufgaben
-    public static void AddActiveTask(Task task)
+    public void AddActiveTask(Task task)
     {
         activeTasks.Add(task);
-        TaskStorage.Save(activeTasks, completeTasks);
+        SaveState();
     }
 
-    public static void RemoveActiveTask(Task task)
+    public void RemoveActiveTask(Task task)
     {
-        activeTasks.Remove(task);
-        TaskStorage.Save(activeTasks, completeTasks);
+        activeTasks.Remove(task); 
+        SaveState();
     }
 
-    public static void AddCompleteTask(Task task)
+    public void AddCompleteTask(Task task)
     {
         completeTasks.Add(task);
-        TaskStorage.Save(activeTasks, completeTasks);
+        SaveState();
     }
 
-    public static void RemoveCompleteTask(Task task)
+    public void RemoveCompleteTask(Task task)
     {
         completeTasks.Remove(task);
-        TaskStorage.Save(activeTasks, completeTasks);
+        SaveState();
     }
 
     // Methode zum Erstellen einer neuen Aufgabe
@@ -66,7 +70,7 @@ public TaskManager()
     }
     
     // Methode zum kompletten Löschen einer Aufgabe
-    public static void DeleteTask(Task task)
+    public void DeleteTask(Task task)
     {
         if (activeTasks.Contains(task))
         {
@@ -77,6 +81,29 @@ public TaskManager()
             RemoveCompleteTask(task);
         }
     }
+    
+    private void SaveState()
+    {
+        TaskStorage.Save(ActiveTasks, CompleteTasks, AppState!);
+    }
+
+    public void LoadState()
+    {
+        TaskStorage.Load(out var tempActiveTasks, out var tempCompleteTasks, out var tempAppState);
+        ActiveTasks.Clear();
+        CompleteTasks.Clear();
+        foreach (var task in tempActiveTasks)
+            ActiveTasks.Add(task);
+        foreach (var task in tempCompleteTasks)
+            CompleteTasks.Add(task);
+        AppState = tempAppState;
+    }
+
+    public void ProcessTaskCompletion(Task task)
+    {
+        AppState?.ProcessTask(task);
+    }
+
 
     // Getter für die Listen
     public IReadOnlyList<Task> GetActiveTasks() => activeTasks.AsReadOnly();

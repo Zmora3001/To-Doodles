@@ -1,13 +1,27 @@
-﻿using System;
+﻿using System.ComponentModel;
 
 namespace To_Doodles;
 
-public class Task
+public class Task : INotifyPropertyChanged
 {
     public int Id { get; init; }
     public string Title { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public bool IsComplete { get; private set; } = false;
+    public bool WasCompleted { get; set; }
+    public bool IsComplete
+    {
+        get => _isComplete;
+        set
+        {
+            if (_isComplete != value)
+            {
+                _isComplete = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsComplete)));
+            }
+        }
+    }
+    private bool _isComplete;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     // Experience rewards
     public int WisdomExp { get; init; }
@@ -22,16 +36,31 @@ public class Task
     // toggelt den Status der Aufgabe und bewegt sie zwischen aktiv und abgeschlossen
     public void ToggleComplete()
     {
-        if (IsComplete) // Wenn die Aufgabe abgeschlossen ist, wird sie wieder aktiv
+        var manager = MainWindow.ManagerInstance;
+        if (manager == null)
+            throw new InvalidOperationException("TaskManager instance not initialized");
+
+        
+        if (IsComplete)
         {
-            TaskManager.AddActiveTask(this);
-            TaskManager.RemoveCompleteTask(this);
+            IsComplete = false;
+            manager.RemoveCompleteTask(this);
+            if (!manager.ActiveTasks.Contains(this))
+                manager.AddActiveTask(this);
         }
-        else // Wenn die Aufgabe aktiv ist, wird sie abgeschlossen
+        else
         {
-            TaskManager.AddCompleteTask(this);
-            TaskManager.RemoveActiveTask(this);
+            IsComplete = true;
+            
+            if (!WasCompleted)
+            {
+                WasCompleted = true;
+                manager.ProcessTaskCompletion(this); // Verarbeitet die Aufgabe, wenn sie zum ersten Mal abgeschlossen wird
+            }
+            
+            manager.RemoveActiveTask(this);
+            if (!manager.CompleteTasks.Contains(this))
+                manager.AddCompleteTask(this);
         }
-        IsComplete = !IsComplete;
     }
 }

@@ -2,12 +2,11 @@
 
 public class AppState
 {
-    private Skill Wisdom { get; } = new();
-    private Skill Patience { get; } = new();
-    private Skill Fun { get; } = new();
-    private Skill Creativity { get; } = new();
+    public Skill Wisdom { get; set; } = new();
+    public Skill Patience { get; set; } = new();
+    public Skill Fun { get; set; } = new();
+    public Skill Creativity { get; set; } = new();
 
-    // fügt die Erfahrung aus der Task zu den jeweiligen Skills hinzu
     public void ProcessTask(Task task)
     {
         Wisdom.IncreaseExp(task.WisdomExp);
@@ -15,9 +14,4 @@ public class AppState
         Fun.IncreaseExp(task.FunExp);
         Creativity.IncreaseExp(task.CreativityExp);
     }
-
-    public Skill GetWisdom() => Wisdom;
-    public Skill GetPatience() => Patience;
-    public Skill GetFun() => Fun;
-    public Skill GetCreativity() => Creativity;
 }
