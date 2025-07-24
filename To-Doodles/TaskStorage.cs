@@ -59,7 +59,58 @@ public static class TaskStorage
         try
         {
             if (!File.Exists(SaveFilePath))
+            {
+                Console.WriteLine("Keine gespeicherten Aufgaben gefunden. Erstelle neue Datei.");
+                // Erstelle die Datei, wenn sie nicht existiert
+                Directory.CreateDirectory(Path.GetDirectoryName(SaveFilePath)!);
+    
+                // Create welcome task directly
+                File.WriteAllText(SaveFilePath, "{\n  " +
+                                                "\"Tasks\": " +
+                                                "{\n    " +
+                                                "\"Active\": [\n      " +
+                                                "{\n        " +
+                                                "\"Id\": 1,\n        " +
+                                                "\"Title\": \"Willkommen bei To-Doodles!\",\n        " +
+                                                "\"Description\": \"Dies ist eine Beispielaufgabe, die automatisch " +
+                                                "erstellt wurde, um den Start zu erleichtern.\",\n        " +
+                                                "\"WasCompleted\": false,\n        " +
+                                                "\"IsComplete\": false,\n        " +
+                                                "\"WisdomExp\": 10,\n        " +
+                                                "\"PatienceExp\": 10,\n        " +
+                                                "\"FunExp\": 10,\n        " +
+                                                "\"CreativityExp\": 10\n      " +
+                                                "}\n    " +
+                                                "],\n    " +
+                                                "\"Complete\": []\n  " +
+                                                "},\n  " +
+                                                "\"AppState\": {\n    " +
+                                                "\"Wisdom\": {\n      " +
+                                                "\"Level\": 1,\n      " +
+                                                "\"ReqExperienceTillNextLevel\": 100,\n      " +
+                                                "\"ExperienceInLevel\": 0,\n      " +
+                                                "\"ExperienceOverall\": 0\n    },\n    " +
+                                                "\"Patience\": {\n      " +
+                                                "\"Level\": 1,\n      " +
+                                                "\"ReqExperienceTillNextLevel\": 100,\n      " +
+                                                "\"ExperienceInLevel\": 0,\n      " +
+                                                "\"ExperienceOverall\": 0\n    },\n    " +
+                                                "\"Fun\": {\n      \"Level\": 1,\n      " +
+                                                "\"ReqExperienceTillNextLevel\": 100,\n      " +
+                                                "\"ExperienceInLevel\": 0,\n      " +
+                                                "\"ExperienceOverall\": 0\n    " +
+                                                "},\n    " +
+                                                "\"Creativity\": {\n      " +
+                                                "\"Level\": 1,\n      " +
+                                                "\"ReqExperienceTillNextLevel\": 100,\n      " +
+                                                "\"ExperienceInLevel\": 0,\n      " +
+                                                "\"ExperienceOverall\": 0\n    " +
+                                                "}\n  " +
+                                                "}\n" +
+                                                "}");
                 return;
+            }
+
 
             string json = File.ReadAllText(SaveFilePath);
             var data = JsonSerializer.Deserialize<SaveData>(json);
