@@ -12,7 +12,8 @@ public class TaskManager: ITaskManager
     
     private static int nextTaskId = 1;
     
-    private AppState? AppState { get; set; }
+    public AppState? AppState { get; set; }
+
 
     public TaskManager()
     {
@@ -29,8 +30,7 @@ public class TaskManager: ITaskManager
         {
             task.Manager = this;
             completeTasks.Add(task);
-        }
-    
+        
         AppState = appState;
         
         

@@ -28,10 +28,11 @@ public partial class MainWindow : Window
         private set => _managerInstance = value;
     }
 
+    public AppState AppState { get; } = new();
     public MainWindow()
     {
         InitializeComponent();
-        ManagerInstance = new TaskManager();
+        ManagerInstance = new TaskManager(AppState);
         DataContext = ManagerInstance;
         ManagerInstance.LoadState();
     }
