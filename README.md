@@ -9,15 +9,20 @@ Aufgaben leicht und spielerisch abarbeiten mit To-Doodles, der neuen To-Do Deskt
 
 | Projektebene   | Erklärung        | Aufgaben          |
 |----------------|------------------|-------------------|
-| Grundgerüst | Was definitiv bis zum Abgabetermin fertig sein muss| C# Projekt mit User-Interface und Desktop Implementierung, zum erstellen/bearbeiten/löschen/suchen von Aufgaben|
+| Grundgerüst | Was definitiv bis zum Abgabetermin fertig sein muss| C# Projekt mit User-Interface und Desktop Implementierung, zum erstellen/bearbeiten/löschen von Aufgaben|
 | Design++| Was noch gemacht werden kann, damit es schöner aussieht| unterschiedliche Themes für die App erstellen|
-| DLC Funktionalität| extra Funktionen für Ausarbeiten des "Allrounder" To-Do-App Vibes| ein Pomodoro Timer, Kalender zum datieren der Aufgaben, Scores für das erledigen von Aufgaben, einteilen der Aufgaben in Kategorien + Filterfunktion|
+| DLC Funktionalität| extra Funktionen für Ausarbeiten des "Allrounder" To-Do-App Vibes| ein Pomodoro Timer, Kalender zum datieren der Aufgaben, Scores für das erledigen von Aufgaben, einteilen der Aufgaben in Kategorien + Filterfunktion, Suchfunktion|
 | DLC Gameifikation | vollständige Umsetzung des Game-Aspektes| Level- und Achievement System, Skill-Tree mit freischalten neuer Funktionen oder Themes|
 | DLC long-term use| das i-Tüpfelchen auf der vollendeten Idee| Streak System für tägliches Nutzen der App -> Belohungen nach 7, 30, 50, 100 und 365 Tagen|
 
+#### Update zur Projekt-Timeline
+Skills und Level-System wurden zum Grundgerüst hinzugefügt, während die Suche von Aufgaben in das DLC Funktionalität verschoben wurde 
+
+## AI-Nutzungstabelle
+
 | Einsatzzweck | Verwendetes Modell | Erfahrung / Bewertung der Nützlichkeit |
 | ------------------------------------------ | ---------------------- | ------------------------------------------------------------- |
-| Anforderungsanalyse | z. B. ChatGPT-4o | z. B. Gute Strukturierung, aber fehlender Bezug zum Use Case. |
+| Anforderungsanalyse | ChatGPT-4o | z. B. Gute Strukturierung, aber fehlender Bezug zum Use Case. |
 | Architekturvorschläge / Designideen | | |
 | Code-Generierung (z. B. Klassen, Methoden) | | |
 | Testfallgenerierung (z. B. Unit Tests) | | |
@@ -29,5 +34,8 @@ Aufgaben leicht und spielerisch abarbeiten mit To-Doodles, der neuen To-Do Deskt
 | Kommunikation (z. B. Commit Messages) | | |
 | Sonstiges | | |
 
-### Dokumentation der technischen Schwierigkeiten
+## Dokumentation der technischen Schwierigkeiten
 https://matrix.tu-freiberg.de/pad/p/technicalDifficulties_SE_Projekt
+
+## Kontext zum Projektablauf
+https://docs.google.com/document/d/1xtHnyGz_s8569TZoi3NzZY5B2RbmJuLAFrOJmQ0tkfc/edit?usp=sharing
