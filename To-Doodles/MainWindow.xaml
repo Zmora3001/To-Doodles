@@ -168,12 +168,21 @@
 
                 </StackPanel>
             
-            <Button Grid.Column="1" Content="Button" Click="OpenTaskUI_Click" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="60" Height="60" Margin="0,0,4,0">
+            <Button Grid.Column="1" Click="OpenTaskUI_Click"
+                    HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"
+                    Width="60" Height="60" Margin="0,0,4,0"
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    Padding="0">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="100"/>
                     </Style>
                 </Button.Resources>
+                <Viewbox Stretch="None">
+                    <Canvas Width="40" Height="40">
+                        <Path Stroke="Black" StrokeThickness="5" Data="M20,7 L20,33 M7,20 L33,20"/>
+                    </Canvas>
+                </Viewbox>
             </Button>
 
             <!--ContentControl Name="TaskUI" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="40,0,10,10"/-->
