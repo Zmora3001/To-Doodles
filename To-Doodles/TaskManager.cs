@@ -2,7 +2,7 @@
 
 namespace To_Doodles;
 
-public class TaskManager
+public class TaskManager: ITaskManager
 {
     private static readonly ObservableCollection<Task> activeTasks = new();
     private static readonly ObservableCollection<Task> completeTasks = new();
@@ -14,17 +14,26 @@ public class TaskManager
     
     private AppState? AppState { get; set; }
 
-public TaskManager()
+    public TaskManager()
     {
         TaskStorage.Load(out var active, out var complete, out var appState);
-        
+    
+        // In TaskManager constructor
         foreach (var task in active)
+        {
+            task.Manager = this;
             activeTasks.Add(task);
-        
+        }
+
         foreach (var task in complete)
+        {
+            task.Manager = this;
             completeTasks.Add(task);
-        
+        }
+    
         AppState = appState;
+        
+        
     }
 
     // Methoden zum Hinzufügen und Entfernen von Aufgaben
@@ -63,7 +72,8 @@ public TaskManager()
             WisdomExp = wisdomExp,
             PatienceExp = patienceExp,
             FunExp = funExp,
-            CreativityExp = creativityExp
+            CreativityExp = creativityExp,
+            Manager = this // Set Manager property
         };
         AddActiveTask(newTask);
         return newTask;

@@ -167,7 +167,7 @@
                                                FontSize="12"
                                                TextTrimming="CharacterEllipsis"
                                                TextWrapping="Wrap"
-                                               MaxHeight="50"/>
+                                               MaxHeight="45"/>
                                 </Grid>
 
                             </Grid>
