@@ -2,7 +2,7 @@
 
 namespace To_Doodles;
 
-public class TaskManager
+public class TaskManager: ITaskManager
 {
     private static readonly ObservableCollection<Task> activeTasks = new();
     private static readonly ObservableCollection<Task> completeTasks = new();

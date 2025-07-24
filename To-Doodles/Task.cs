@@ -77,14 +77,16 @@ public class Task : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-    // Optional timestamps
-    // public DateTime CreatedAt { get; init; } = DateTime.Now;
-    // public DateTime? DueDate { get; set; }
+    
+    public ITaskManager? Manager { get; set; }
 
     // toggelt den Status der Aufgabe und bewegt sie zwischen aktiv und abgeschlossen
     public void ToggleComplete()
     {
-        var manager = MainWindow.ManagerInstance;
+        if (Manager == null)
+            throw new InvalidOperationException("TaskManager not set");
+        var manager = Manager;
+
         if (manager == null)
             throw new InvalidOperationException("TaskManager instance not initialized");
 
