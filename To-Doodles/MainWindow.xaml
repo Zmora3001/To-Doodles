@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:To_Doodles"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="360">
+    
+    <Window.Resources>
+        <local:WidthMinusMarginConverter x:Key="WidthMinusMarginConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,18 +23,23 @@
             </Grid.ColumnDefinitions>
             
             <!--ItemsSource="{d:SampleData ItemCount=5}"-->
-            <ScrollViewer Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Auto">
-
-                <StackPanel>
+                <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
                     <ListView ItemsSource="{Binding ActiveTasks}"
-                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      BorderThickness="0,0,0,1" BorderBrush="LightGray">
+                              d:DataContext="{d:DesignInstance}" 
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              BorderThickness="0,0,0,1" 
+                              BorderBrush="LightGray"
+                              HorizontalContentAlignment="Stretch">
 
                         <ListView.ItemTemplate>
 
                             <DataTemplate DataType="local:Task">
-                                <Grid Margin="0" HorizontalAlignment="Stretch">
+                                <Grid Margin="0" HorizontalAlignment="Stretch"
+                                      Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, 
+                                      Converter={StaticResource WidthMinusMarginConverter}, 
+                                      ConverterParameter=10}">
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
@@ -53,15 +62,33 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Margin="5,5,0,0" VerticalAlignment="Center" Text="{Binding Title}" FontSize="16"/>
+                                            <TextBlock Grid.Column="0"
+                                                       Margin="5,5,0,0"
+                                                       VerticalAlignment="Center"
+                                                       Text="{Binding Title}"
+                                                       FontSize="16"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       TextWrapping="NoWrap"/>
                                             <ComboBox Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
                                                 <ComboBoxItem Content="Edit"/>
                                                 <ComboBoxItem Content="Delete"/>
                                             </ComboBox>
 
                                         </Grid>
-                                        <Rectangle Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="1" Fill="#FFB0BEC5" Margin="5,0,5,0"/>
-                                        <TextBlock Grid.Row="1" Margin="5,0,5,5" VerticalAlignment="Top" Text="{Binding Description}" FontSize="12"/>
+                                        <Rectangle Grid.Row="0" 
+                                                   Grid.ColumnSpan="2" 
+                                                   VerticalAlignment="Bottom" 
+                                                   Height="1" 
+                                                   Fill="#FFB0BEC5" 
+                                                   Margin="5,0,5,0"/>
+                                        <TextBlock Grid.Row="1"
+                                                   Margin="5,0,5,5"
+                                                   VerticalAlignment="Top"
+                                                   Text="{Binding Description}"
+                                                   FontSize="12"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   TextWrapping="Wrap"
+                                                   MaxHeight="45" />
                                     </Grid>
 
                                 </Grid>
@@ -73,14 +100,21 @@
                     </ListView>
 
                     <ListView ItemsSource="{Binding CompleteTasks}"
-                      d:DataContext="{d:DesignInstance}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                      BorderThickness="0">
+                              d:DataContext="{d:DesignInstance}" 
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                              BorderThickness="0" 
+                              BorderBrush="LightGray"
+                              HorizontalContentAlignment="Stretch">
 
                         <ListView.ItemTemplate>
 
                             <DataTemplate DataType="local:Task">
-                                <Grid Margin="0" HorizontalAlignment="Stretch">
-
+                                <Grid Margin="0" HorizontalAlignment="Stretch"
+                                      Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListView}, 
+                                      Converter={StaticResource WidthMinusMarginConverter}, 
+                                      ConverterParameter=10}">
+                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition/>
@@ -100,7 +134,13 @@
                                                 <ColumnDefinition Width="*"/>
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
-                                            <TextBlock Grid.Column="0" Margin="5,5,0,0" VerticalAlignment="Center" Text="{Binding Title}" FontSize="16"/>
+                                            <TextBlock Grid.Column="0"
+                                                       Margin="5,5,0,0"
+                                                       VerticalAlignment="Center"
+                                                       Text="{Binding Title}"
+                                                       FontSize="16"
+                                                       TextTrimming="CharacterEllipsis"
+                                                       TextWrapping="NoWrap"/>
                                             <ComboBox Grid.Column="1" Margin="10,5,5,5" VerticalAlignment="Center" HorizontalAlignment="Right" Width="20">
                                                 <ComboBoxItem Content="Edit"/>
                                                 <ComboBoxItem Content="Delete"/>
@@ -108,7 +148,14 @@
 
                                         </Grid>
                                         <Rectangle Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Height="1" Fill="#FFB0BEC5" Margin="5,0,5,0"/>
-                                        <TextBlock Grid.Row="1" Margin="5,0,5,5" VerticalAlignment="Top" Text="{Binding Description}" FontSize="12"/>
+                                        <TextBlock Grid.Row="1" 
+                                                   Margin="5,0,5,5" 
+                                                   VerticalAlignment="Top" 
+                                                   Text="{Binding Description}" 
+                                                   FontSize="12"
+                                                   TextTrimming="CharacterEllipsis"
+                                                   TextWrapping="Wrap"
+                                                   MaxHeight="50"/>
                                     </Grid>
 
                                 </Grid>
@@ -120,8 +167,6 @@
                     </ListView>
 
                 </StackPanel>
-                
-            </ScrollViewer>
             
             <Button Grid.Column="1" Content="Button" Click="OpenTaskUI_Click" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="60" Height="60" Margin="0,0,4,0">
                 <Button.Resources>
