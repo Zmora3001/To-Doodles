@@ -21,6 +21,38 @@
                 <ColumnDefinition Width="7*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+                <Border BorderBrush="transparent" Background="CadetBlue" BorderThickness="1" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Wisdom:" />
+                        <TextBlock Text="{Binding AppState.Wisdom.ExperienceOverall}" />
+                    </StackPanel>
+                </Border>
+
+                <Border BorderBrush="transparent" Background="Gold" BorderThickness="1" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Patience:" />
+                        <TextBlock Text="{Binding AppState.Patience.ExperienceOverall}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderBrush="transparent" Background="MediumSeaGreen" BorderThickness="1" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Fun:" />
+                        <TextBlock Text="{Binding AppState.Fun.ExperienceOverall}"/>
+                    </StackPanel>
+                </Border>
+
+                <Border BorderBrush="transparent" Background="LightPink" BorderThickness="1" CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Creativity:" />
+                        <TextBlock Text="{Binding AppState.Creativity.ExperienceOverall}" />
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
             
             <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
@@ -52,6 +84,7 @@
 
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
@@ -93,6 +126,26 @@
                                                TextTrimming="CharacterEllipsis"
                                                TextWrapping="Wrap"
                                                MaxHeight="45" />
+                                    
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5,0,5,5">
+
+                                        <Border BorderBrush="transparent" Background="CadetBlue" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding WisdomExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                        <Border BorderBrush="transparent" Background="Gold" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding PatienceExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                        <Border BorderBrush="transparent" Background="MediumSeaGreen" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding FunExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                        <Border BorderBrush="transparent" Background="LightPink" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding CreativityExp}" Margin="5,2,5,2"/>
+                                        </Border>
+                                        
+                                    </StackPanel>
                                 </Grid>
 
                             </Grid>
@@ -133,6 +186,7 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
 
                                     <Grid Grid.Row="0">
@@ -168,6 +222,26 @@
                                                TextTrimming="CharacterEllipsis"
                                                TextWrapping="Wrap"
                                                MaxHeight="50"/>
+
+                                    <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5,0,5,5">
+
+                                        <Border BorderBrush="transparent" Background="CadetBlue" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding WisdomExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                        <Border BorderBrush="transparent" Background="Gold" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding PatienceExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                        <Border BorderBrush="transparent" Background="MediumSeaGreen" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding FunExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                        <Border BorderBrush="transparent" Background="LightPink" BorderThickness="1" CornerRadius="5">
+                                            <TextBlock Text="{Binding CreativityExp}" Margin="5,2,5,2"/>
+                                        </Border>
+
+                                    </StackPanel>
                                 </Grid>
 
                             </Grid>
